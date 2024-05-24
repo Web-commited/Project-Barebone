@@ -42,7 +42,7 @@ const UserList: React.FC = () => {
             <h1 className="text-2xl font-bold mb-4">User List</h1>
             <ul className="space-y-4">
                 {users.map((user) => (
-                    <li key={user.id} className="bg-gray-100 p-4 rounded-md">
+                    <li key={user.id} className="bg-gray-100 p-4 rounded-m text-black">
                         <div>ID: {user.id}</div>
                         <div>Name: {user.name}</div>
                         <div>Email: {user.email}</div>
