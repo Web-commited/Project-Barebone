@@ -47,3 +47,24 @@ establishment of connection between frontend and backend with fuctional database
 ### Day 3
 
 Frontend form to make POST and GET requests to the backend, where it is stored without authentication,Debug components finished.
+
+### Day 4
+
+backend jwt& local authentication: successfully implemented: if the hashed password input is the same as in the database, then return a jwt, otherwise nothing.
+
+Testing purposes will delete later
+{
+"name":"The Doctor",
+"email":"example@mailthing.com",
+"username":"LOGINexample",
+"password":"Password"
+}
+
+### Day 5
+
+Protect Controllers with AuthGuard
+
+### Day 6
+
+Frontend entry points, should be able to first: register and submit forms to the backend after validation and sanitization, also should use react datepicker to make sure that the user
+is not under 18 years old.

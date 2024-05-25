@@ -8,11 +8,14 @@ import { hash } from 'bcryptjs';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: number): Promise<User> {
     return this.usersService.findOne(id);
@@ -24,6 +27,7 @@ export class UsersController {
     return this.usersService.create(user);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: number): Promise<void> {
     return this.usersService.remove(id);
