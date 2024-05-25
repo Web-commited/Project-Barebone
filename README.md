@@ -46,7 +46,7 @@ establishment of connection between frontend and backend with fuctional database
 
 ### Day 3
 
-Frontend form to make POST and GET requests to the backend, where it is stored without authentication,Debug components finished.
+Frontend form to make POST and GET requests to the backend, where it is stored without authentication,Debug components finished, end of **Physical day 1**
 
 ### Day 4
 
@@ -68,3 +68,20 @@ Protect Controllers with AuthGuard
 
 Frontend entry points, should be able to first: register and submit forms to the backend after validation and sanitization, also should use react datepicker to make sure that the user
 is not under 18 years old.
+
+### Day 7
+
+Frontend entry points generally finished, able to register and login with different forms, end of **Physical day 2**
+
+### Day 8
+
+TODO:
+1.console log as an auth fail response is not ok
+2.add redux to store jwt
+3.styling and add link jumps to ensure better functionality
+4.edit profile: button & backend patch method
+5.changelog printing
+6.sanitization
+7.tests
+8.responsive design
+9.optional: add to schema some other forms of data

@@ -8,8 +8,8 @@ export class AuthController {
 
   @Post('login')
   async login(@Request() req) {
-    console.log(req.body.user);
-    return this.authService.validateUser(req.body.user.username, req.body.user.password);
+
+    return this.authService.validateUser(req.body.username, req.body.password);
   }
   @Get('hello')
     async getHello(): Promise<string> {
