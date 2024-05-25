@@ -1,12 +1,13 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 import { UsersService } from './user.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 import { User } from './user.entity';
+import { hash } from 'bcryptjs';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
   @Get()
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
@@ -18,7 +19,8 @@ export class UsersController {
   }
 
   @Post()
-  create(@Body() user: User): Promise<User> {
+  async create(@Body() user: User): Promise<User> {
+    user.password = await hash(user.password, 10);
     return this.usersService.create(user);
   }
 
