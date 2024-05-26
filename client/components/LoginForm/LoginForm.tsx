@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '@/store/authSlice';
 import axios from 'axios';
 
 interface LoginFormProps {
-    onLogin: (token: string) => void;
+    onLogin: () => void;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -20,11 +23,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             });
 
             const token = response.data.access_token;
-
-            localStorage.setItem('token', token);
-            console.log(response.data);
-            console.log(localStorage.getItem('token'));
-            onLogin(token);
+            console.log(token);
+            dispatch(login({ token: token, userId: username }));
+            onLogin();
         } catch (error) {
             setError('Invalid username or password');
         }

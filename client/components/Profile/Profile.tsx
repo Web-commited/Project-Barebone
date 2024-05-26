@@ -9,8 +9,8 @@ interface User {
     email: string;
 }
 
-const UserList: React.FC = () => {
-    const [users, setUsers] = useState<User[]>([]);
+const Profile: React.FC = () => {
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const token = useSelector((state: RootState) => state.auth.token);
@@ -18,24 +18,25 @@ const UserList: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/users', {
+                const response = await axios.get<User>('http://localhost:3001/user', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
-
                 });
-                setUsers(response.data);
+                setUser(response.data);
                 setError(null);
                 console.log(response.data);
             } catch (error) {
-                setError('Either the server is down or you are not authorized to view this page. Please login.');
+                setError('Either the server is down or you are not authorized to view this user. Please login.');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchData();
-    }, [token, error]);
+        if (token) {
+            fetchData();
+        }
+    }, [token]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -45,19 +46,19 @@ const UserList: React.FC = () => {
         return <div>Error: {error}</div>;
     }
 
+    if (!user) {
+        return <div>No user data available</div>;
+    }
+
     return (
         <div className="container mx-auto">
-            <h1 className="text-2xl font-bold mb-4">User List</h1>
-            <ul className="space-y-4">
-                {users.map((user) => (
-                    <li key={user.id} className="bg-gray-100 p-4 rounded-m text-black hover:scale-105 ease-in-out duration-75">
-                        <div>Name: {user.name}</div>
-                        <div>Email: {user.email}</div>
-                    </li>
-                ))}
-            </ul>
+            <h1 className="text-2xl font-bold mb-4">User Profile</h1>
+            <div className="bg-gray-100 p-4 rounded-md text-black hover:scale-105 ease-in-out duration-75">
+                <div>Name: {user.name}</div>
+                <div>Email: {user.email}</div>
+            </div>
         </div>
     );
 };
 
-export default UserList;
+export default Profile;
