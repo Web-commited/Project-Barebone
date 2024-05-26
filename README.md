@@ -83,7 +83,9 @@ edit profile: button, form & backend put method
 
 ### Day 12
 
-changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened
+changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened, end of **Physical day 3**
+
+### Day 13
 
 TODO:
 5.changelog printing

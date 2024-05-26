@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { NotFoundException } from '@nestjs/common';
 
@@ -8,7 +8,7 @@ import { NotFoundException } from '@nestjs/common';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    public usersRepository: Repository<User>,
+    private usersRepository: Repository<User>,
   ) {}
 
   findAll(): Promise<User[]> {
