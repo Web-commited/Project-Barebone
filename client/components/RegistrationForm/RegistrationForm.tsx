@@ -2,12 +2,18 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import FormData from '@/type';
 import DatePicker from "react-datepicker";
 import DOMPurify from 'dompurify';
+import { useDispatch } from 'react-redux';
+import { login } from '@/store/authSlice';
 import { Toaster, toast } from 'react-hot-toast';
+import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css";
 
+interface RegistrationFormProps {
+    onLogin: () => void;
+}
 
-
-const RegistrationForm: React.FC = () => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({ onLogin }) => {
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -25,6 +31,23 @@ const RegistrationForm: React.FC = () => {
             [name]: value,
         });
     };
+
+    const onSuccessfulRegistration = async () => {
+        try {
+            const response = await axios.post('http://localhost:3001/auth/login', {
+                username: formData.username,
+                password: formData.password,
+            });
+
+            const token = response.data.access_token;
+            console.log(response);
+            dispatch(login({ token: token, userId: formData.username }));
+            onLogin();
+        } catch (error) {
+            toast.error('Login failed, this is embarrassing');
+        }
+
+    }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -55,16 +78,19 @@ const RegistrationForm: React.FC = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData)
-            ,
+            body: JSON.stringify(formData),
         })
             .then((response) => response.json())
             .then((data) => {
                 toast.success('Registration successful');
+                setTimeout(() => {
+                    onSuccessfulRegistration();
+                }, 1000);
             })
             .catch((error) => {
                 toast.error('Registration failed, this is embarrassing');
             });
+
     };
 
     return (

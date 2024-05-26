@@ -26,7 +26,7 @@ export default function Home() {
       case 'login':
         return <LoginForm onLogin={onLogin} />;
       case 'register':
-        return <RegistrationForm />;
+        return <RegistrationForm onLogin={onLogin} />;
       default:
         return <div>Start By clicking one of the Buttons</div>;
     }
