@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../user/user.service';
 import * as bcrypt from 'bcryptjs';
+
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,7 @@ export class AuthService {
       const { password, ...result } = user;
       return this.login(result);
     }
-    return 'Hello World! YOU did not provide a valid username or password.';
+    throw new HttpException('Invalid username or password',HttpStatus.UNAUTHORIZED);
   }
 
   async login(user: any) {

@@ -75,10 +75,17 @@ Frontend entry points generally finished, able to register and login with differ
 
 ### Day 8
 
+Added redux to store jwt token and username
+
+### Day 9
+
+initial version of server console logs when authentication fails, bad idea. Added 401 server error when auth fails, and corresponding alerts in the frontend
+
+### Day 10
+
+Frontend UX update: entering gives options to register or login
+
 TODO:
-1.console log as an auth fail response is not ok
-2.add redux to store jwt
-3.styling and add link jumps to ensure better functionality
 4.edit profile: button & backend patch method
 5.changelog printing
 6.sanitization

@@ -56,7 +56,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto mt-8 p-10 bg-slate-200">
+        <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto mt-8 p-10 bg-slate-200 rounded-lg">
             <div>
                 <h1 className="text-3xl font-bold text-center mb-4 text-gray-600">Registration Form</h1>
             </div>

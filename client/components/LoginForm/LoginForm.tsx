@@ -23,7 +23,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             });
 
             const token = response.data.access_token;
-            console.log(token);
+            console.log(response);
             dispatch(login({ token: token, userId: username }));
             onLogin();
         } catch (error) {
@@ -32,7 +32,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-8">
+        <div className="max-w-md mx-auto mt-8 p-6 bg-slate-700 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Login</h2>
             {error && <p className="text-red-500 mb-4">{error}</p>}
             <form onSubmit={handleSubmit}>
@@ -43,7 +43,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                     <input
                         type="text"
                         id="username"
-                        className="border border-gray-300 rounded px-3 py-2 w-full text-black"
+                        className="border border-gray-300 rounded px-3 py-2 w-full bg-slate-800 "
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
@@ -56,7 +56,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                     <input
                         type="password"
                         id="password"
-                        className="border border-gray-300 rounded px-3 py-2 w-full text-black"
+                        className="border border-gray-300 rounded px-3 py-2 w-full bg-slate-800"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
