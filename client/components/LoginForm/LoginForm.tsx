@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '@/store/authSlice';
+import { Toaster, toast } from 'react-hot-toast';
+import DOMPurify from 'dompurify';
 import axios from 'axios';
 
 interface LoginFormProps {
@@ -10,7 +12,7 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+
     const dispatch = useDispatch();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,14 +29,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             dispatch(login({ token: token, userId: username }));
             onLogin();
         } catch (error) {
-            setError('Invalid username or password');
+            toast.error('Invalid username or password');
+
         }
     };
 
     return (
-        <div className="max-w-md mx-auto mt-8 p-6 bg-slate-700 rounded-lg">
+        <div className="max-w-md mx-auto mt-8 p-6 bg-slate-700 rounded-lg transition-opacity duration-500 opacity-100">
+            <Toaster />
             <h2 className="text-2xl font-bold mb-4">Login</h2>
-            {error && <p className="text-red-500 mb-4">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="username" className="block font-medium mb-1">
@@ -45,7 +48,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                         id="username"
                         className="border border-gray-300 rounded px-3 py-2 w-full bg-slate-800 "
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setUsername(DOMPurify.sanitize(e.target.value))}
                         required
                     />
                 </div>
@@ -58,13 +61,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                         id="password"
                         className="border border-gray-300 rounded px-3 py-2 w-full bg-slate-800"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => setPassword(DOMPurify.sanitize(e.target.value))}
                         required
                     />
                 </div>
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600"
+                    className="bg-slate-600 hover:bg-slate-800 duration-75 ease-out text-white rounded px-4 py-2 "
                 >
                     Login
                 </button>

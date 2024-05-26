@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
+import Link from 'next/link';
 
 interface User {
     id: number;
@@ -28,7 +29,7 @@ const UserList: React.FC = () => {
                 setError(null);
                 console.log(response.data);
             } catch (error) {
-                setError('Either the server is down or you are not authorized to view this page. Please login.');
+                setError('Either the server is down or you are not authorized to view this page.');
             } finally {
                 setLoading(false);
             }
@@ -42,7 +43,10 @@ const UserList: React.FC = () => {
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div className='font-bold text-2xl'>
+            Error: {error}
+            Go <Link href="/" className='text-slate-500'>Here</Link> to login
+        </div>;
     }
 
     return (
