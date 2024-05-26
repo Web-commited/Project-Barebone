@@ -52,22 +52,13 @@ Frontend form to make POST and GET requests to the backend, where it is stored w
 
 backend jwt& local authentication: successfully implemented: if the hashed password input is the same as in the database, then return a jwt, otherwise nothing.
 
-Testing purposes will delete later
-{
-"name":"The Doctor",
-"email":"example@mailthing.com",
-"username":"LOGINexample",
-"password":"Password"
-}
-
 ### Day 5
 
 Protect Controllers with AuthGuard
 
 ### Day 6
 
-Frontend entry points, should be able to first: register and submit forms to the backend after validation and sanitization, also should use react datepicker to make sure that the user
-is not under 18 years old.
+Frontend entry points, should be able to first: register and submit forms to the backend after validation and sanitization, also should use react datepicker to make sure that the user is not under 18 years old.
 
 ### Day 7
 
@@ -83,12 +74,19 @@ initial version of server console logs when authentication fails, bad idea. Adde
 
 ### Day 10
 
-Frontend UX update: entering gives options to register or login
+Frontend UX update: entering gives options to register or login.
+Also DOMPurify for sanitization
+
+### Day 11
+
+edit profile: button, form & backend put method
+
+### Day 12
+
+changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened
 
 TODO:
-4.edit profile: button & backend patch method
 5.changelog printing
-6.sanitization
 7.tests
 8.responsive design
 9.optional: add to schema some other forms of data

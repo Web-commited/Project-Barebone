@@ -27,6 +27,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             const token = response.data.access_token;
             console.log(response);
             dispatch(login({ token: token, userId: username }));
+            console.log(username);
             onLogin();
         } catch (error) {
             toast.error('Invalid username or password');

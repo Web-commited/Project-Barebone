@@ -5,6 +5,7 @@ import LoginForm from '@/components/LoginForm';
 import store from '@/store/store';
 import { Provider } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
 
@@ -38,7 +39,6 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">BackBone</h1>
       <Provider store={store}>
         <div className={`transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
           {renderComponent()}

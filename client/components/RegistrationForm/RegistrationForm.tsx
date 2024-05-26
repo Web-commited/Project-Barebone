@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
-const RegistrationForm = () => {
+const RegistrationForm: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -50,7 +50,6 @@ const RegistrationForm = () => {
         });
 
 
-
         fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: {
@@ -61,10 +60,10 @@ const RegistrationForm = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
+                toast.success('Registration successful');
             })
             .catch((error) => {
-                console.error('Error:', error);
+                toast.error('Registration failed, this is embarrassing');
             });
     };
 

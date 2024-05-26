@@ -27,7 +27,6 @@ const UserList: React.FC = () => {
                 });
                 setUsers(response.data);
                 setError(null);
-                console.log(response.data);
             } catch (error) {
                 setError('Either the server is down or you are not authorized to view this page.');
             } finally {
