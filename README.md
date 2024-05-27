@@ -97,25 +97,30 @@ This is a list of problems that I understand exists, but do not have the time to
 
 ### Problem 1
 
-Secrets are exposed
-Solution: .env.example and .env.local should be a part of the repository
+Secrets are exposed.
+
+**Solution:** .env.example and .env.local should be a part of the repository
 
 ### Problem 2
 
-Password does not ensure TLS
-Solution: hashing the password in the frontend instead of the backend, so that the password is hashed when transmitting.
+Password does not ensure TLS.
+
+**Solution:** hashing the password in the frontend instead of the backend, so that the password is hashed when transmitting.
 
 ### Problem 3
 
 Logs are queried by their username, hence if a profile edit changes the username, the log is unreachable.
-Solution: use userId and add that to the redux store.
+
+**Solution:** use userId and add that to the redux store.
 
 ### Problem 4
 
 Credentials doesn't persist in between refreshes.
-Solution: tokens should be stored in either local or session/cookie storage.
+
+**Solution:** tokens should be stored in either local or session/cookie storage.
 
 ### Problem 5
 
 Not enough tests and backend dependency issues.
-Solution: spend more time on writing tests and managing dependencies.
+
+**Solution:** spend more time on writing tests and managing dependencies.
