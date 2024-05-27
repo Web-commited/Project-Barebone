@@ -4,6 +4,7 @@ import { UsersModule } from './user/user.module';
 import { LogModule } from './log/log.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/auth.controller';
+import { AuthService } from './auth/auth.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -20,6 +21,6 @@ import { AppService } from './app.service';
     LogModule,
   ],
   controllers: [AppController, AuthController],
-  providers: [AppService],
+  providers: [AppService,AuthService],
 })
 export class AppModule {}
