@@ -50,20 +50,24 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onLogin }) => {
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+
         e.preventDefault();
+        //validate form data
         if (!formData.name.trim() || !formData.email.trim() || !formData.username.trim() || !formData.password.trim() || !formData.confirmPassword.trim() || !formData.dateOfBirth.trim()) {
             toast.error('Please fill in all fields');
             return;
         }
+        //validate password
         if (formData.password !== formData.confirmPassword) {
             toast.error('Passwords do not match');
             return;
         }
+        //whether the user is 18 years or older
         if (new Date().getFullYear() - new Date(formData.dateOfBirth).getFullYear() < 18) {
             toast.error('You must be 18 years or older to register');
             return;
         }
-
+        //sanitize form data
         Object.entries(formData).forEach(([key, value]) => {
             const sanitizedValue = DOMPurify.sanitize(value);
             if (value !== sanitizedValue) {

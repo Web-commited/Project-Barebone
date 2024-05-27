@@ -22,6 +22,7 @@ const Profile: React.FC = () => {
     const token = useSelector((state: RootState) => state.auth.token);
     const username = useSelector((state: RootState) => state.auth.userId);
 
+    // Fetch user data, require token
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -44,6 +45,7 @@ const Profile: React.FC = () => {
         }
     }, [token]);
 
+    // Edit mode manipulation
     const handleEdit = () => {
         setEditMode(!editMode);
     };
@@ -63,7 +65,7 @@ const Profile: React.FC = () => {
             };
         });
     };
-
+    //submitting user also should go through validation
     const handleSubmit = async () => {
         if (user?.email === '' || user?.name === '' || user?.username === '') {
             toast.error('Please fill in all fields');
@@ -82,6 +84,7 @@ const Profile: React.FC = () => {
             });
             dispatch(updateUser(response.data));
             setEditMode(false);
+            toast.success('User data updated successfully');
         } catch (error) {
             toast.error('Error updating user data');
         }

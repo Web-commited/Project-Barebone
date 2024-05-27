@@ -3,13 +3,15 @@
 ## Introduction
 
 This project consists of a Nest.js backend and Next.js frontend, A simple version of a user authentication system.
+This project had me learn TypeORM and Nest from scratch, and I spend 3 physical days (approx 6 hours every physical day) tackling this backbone project.
+The biggest roadblocks are dependency issues in the backend, which is because of my lack of familiarity to the framework.
 
 ## Features
 
 - **Feature 1**: User Registeration.
 - **Feature 2**: Authentication.
 - **Feature 3**: User data CRUD.
-- **Feature 4**: Visible Logs.
+- **Feature 4**: Visible change Logs.
 
 ## Installation and Usage
 
@@ -83,12 +85,37 @@ edit profile: button, form & backend put method
 
 ### Day 12
 
-changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened, end of **Physical day 3**
+changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened
 
 ### Day 13
 
-TODO:
-5.changelog printing
-7.tests
-8.responsive design
-9.optional: add to schema some other forms of data
+tests, end of **Physical day 3**
+
+## Acknowledgements
+
+This is a list of problems that I understand exists, but do not have the time to tackle the problem in time, it is ordered from most severe to least.
+
+### Problem 1
+
+Secrets are exposed
+Solution: .env.example and .env.local should be a part of the repository
+
+### Problem 2
+
+Password does not ensure TLS
+Solution: hashing the password in the frontend instead of the backend, so that the password is hashed when transmitting.
+
+### Problem 3
+
+Logs are queried by their username, hence if a profile edit changes the username, the log is unreachable.
+Solution: use userId and add that to the redux store.
+
+### Problem 4
+
+Credentials doesn't persist in between refreshes.
+Solution: tokens should be stored in either local or session/cookie storage.
+
+### Problem 5
+
+Not enough tests and backend dependency issues.
+Solution: spend more time on writing tests and managing dependencies.

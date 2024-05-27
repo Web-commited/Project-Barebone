@@ -20,6 +20,8 @@ const LogList: React.FC = () => {
     const [logEntries, setLogEntries] = useState<LogEntry[]>([]);
     const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
 
+    //toggle expands every log entry
+
     const toggleExpand = (id: number) => {
         setExpandedIds((prev) => {
             const newSet = new Set(prev);
@@ -33,6 +35,7 @@ const LogList: React.FC = () => {
         })
     }
     useEffect(() => {
+        //fetch log entries, token is required
         const fetchData = async () => {
             try {
                 const response = await axios.get<LogEntry[]>(`http://localhost:3001/logs/${username}`, {
