@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { updateUser } from '@/store/authSlice';
 import toast, { Toaster } from 'react-hot-toast';
+import Link from 'next/link';
 
 interface User {
     id: number;
@@ -88,7 +89,8 @@ const Profile: React.FC = () => {
 
 
     if (loading) {
-        return <div>Loading...</div>;
+
+        return <div>Loading... Click <Link href={'/'} className='text-xl text-gray-200 font-bold'>Here</Link> to go to Login Page</div>;
     }
 
     if (error) {
