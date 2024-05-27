@@ -6,10 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/auth.controller';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerService } from './log/logger.service';
-import { LogController } from './log/log.controller';
-
-
 
 @Module({
   imports: [
@@ -21,7 +17,7 @@ import { LogController } from './log/log.controller';
     }),
     UsersModule,
     AuthModule,
-
+    LogModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService],

@@ -1,9 +1,7 @@
-
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Log } from './log.entity';
-
 
 @Injectable()
 export class LoggerService {
@@ -12,11 +10,12 @@ export class LoggerService {
     private readonly logRepository: Repository<Log>,
   ) {}
 
-  async logAction(username: string, id: string, actionType: string): Promise<void> {
+  async logAction(username: string, actionType: string): Promise<void> {
     const log = new Log();
+    console.log('Logging action:', actionType, 'for user:', username);
     log.username = username;
-    log.userId = id;
     log.actionType = actionType;
+    log.timestamp = new Date();
     await this.logRepository.save(log);
   }
 
@@ -27,6 +26,7 @@ export class LoggerService {
   async getLogsByUsername(username: string): Promise<Log[]> {
     return this.logRepository.find({ where: { username } });
   }
+
 }
 
 export default LoggerService;

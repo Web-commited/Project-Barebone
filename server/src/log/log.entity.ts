@@ -9,9 +9,6 @@ export class Log {
   username: string;
 
   @Column()
-  userId: string;
-
-  @Column()
   actionType: string;
 
   @Column()

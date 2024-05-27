@@ -1,6 +1,6 @@
 {
   "type": "sqlite",
-  "database": "path_to_your_database.sqlite",
+  "database": "database.sqlite",
   "entities": ["dist/user/**/*.entity{.ts,.js}", "dist/log/**/*.entity{.ts,.js}"],
   "synchronize": true,
   "logging": true

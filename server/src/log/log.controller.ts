@@ -1,6 +1,4 @@
-// log.controller.ts
-
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post} from '@nestjs/common';
 import { LoggerService } from './logger.service';
 import { Log } from './log.entity';
 
@@ -16,5 +14,10 @@ export class LogController {
   @Get(':username')
   async getLogsByUsername(@Param('username') username: string): Promise<Log[]> {
     return this.loggerService.getLogsByUsername(username);
+  }
+  @Post()
+  async createLog(@Body() body: { username: string, actionType: string }): Promise<void> {
+    const { username, actionType } = body;
+    await this.loggerService.logAction(username, actionType);
   }
 }
