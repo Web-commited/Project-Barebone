@@ -15,9 +15,4 @@ export class LogController {
   async getLogsByUsername(@Param('username') username: string): Promise<Log[]> {
     return this.loggerService.getLogsByUsername(username);
   }
-  @Post()
-  async createLog(@Body() body: { username: string, actionType: string }): Promise<void> {
-    const { username, actionType } = body;
-    await this.loggerService.logAction(username, actionType);
-  }
 }

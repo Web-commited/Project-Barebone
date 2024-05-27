@@ -10,9 +10,8 @@ export class LoggerService {
     private readonly logRepository: Repository<Log>,
   ) {}
 
-  async logAction(username: string, actionType: string): Promise<void> {
+  async logAction(username: string, actionType: string, metadata:string): Promise<void> {
     const log = new Log();
-    console.log('Logging action:', actionType, 'for user:', username);
     log.username = username;
     log.actionType = actionType;
     log.timestamp = new Date();

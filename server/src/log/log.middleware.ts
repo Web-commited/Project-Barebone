@@ -11,17 +11,16 @@ export class LogMiddleware implements NestMiddleware {
     const { method, path, body } = req;
 
     if(path === '/auth/login') {
-      await this.loggerService.logAction(body.username, 'login');
+      await this.loggerService.logAction(body.username, 'login',`${body.username} logged in `);
       next();
       return;
     }
-
     switch (method) {
       case 'POST':
-        await this.loggerService.logAction(body.username, 'register');
+        await this.loggerService.logAction(body.username, 'register','User registered');
         break;
       case 'PUT':
-        await this.loggerService.logAction(body.username, 'edit');
+        await this.loggerService.logAction(body.username, 'edit','you edited your profile');
         break;
     }
 

@@ -13,4 +13,7 @@ export class Log {
 
   @Column()
   timestamp: Date;
+
+  @Column({ nullable: true })
+  metadata: string;
 }
