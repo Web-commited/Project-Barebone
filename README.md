@@ -4,7 +4,7 @@
 
 This project consists of a Nest.js backend and Next.js frontend, A simple version of a user authentication system.
 This project had me learn TypeORM and Nest from scratch, and I spend 3 physical days (approx 6 hours every physical day) tackling this backbone project.
-The biggest roadblocks are dependency issues in the backend, which is because of my lack of familiarity to the framework.
+The biggest roadblocks throughout the project are dependency issues in the backend, which is because of my lack of familiarity to the framework.
 
 ## Features
 
@@ -27,7 +27,7 @@ To install and use this project, follow these steps:
    npm install
    npm run start
    ```
-3. Add another terminal and Navigate to the server directory and install dependencies.
+3. Add another terminal and Navigate to the client directory and install dependencies.
    ```
    cd client
    npm install
@@ -40,11 +40,11 @@ To install and use this project, follow these steps:
 
 ### Day 1
 
-initialization of project and setting up basic structure.
+Initialization of project and setting up basic structure.
 
 ### Day 2
 
-establishment of connection between frontend and backend with fuctional database utilisation
+Establishment of connection between frontend and backend with fuctional database utilisation
 
 ### Day 3
 
@@ -52,7 +52,7 @@ Frontend form to make POST and GET requests to the backend, where it is stored w
 
 ### Day 4
 
-backend jwt& local authentication: successfully implemented: if the hashed password input is the same as in the database, then return a jwt, otherwise nothing.
+Backend jwt& local authentication: successfully implemented: if the hashed password input is the same as in the database, then return a jwt, otherwise nothing.
 
 ### Day 5
 
@@ -72,7 +72,7 @@ Added redux to store jwt token and username
 
 ### Day 9
 
-initial version of server console logs when authentication fails, bad idea. Added 401 server error when auth fails, and corresponding alerts in the frontend
+Initial version of server console logs when authentication fails, bad idea. Added 401 server error when auth fails, and corresponding alerts in the frontend
 
 ### Day 10
 
@@ -81,15 +81,15 @@ Also DOMPurify for sanitization
 
 ### Day 11
 
-edit profile: button, form & backend put method
+Edit profile: button, form & backend put method
 
 ### Day 12
 
-changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened
+Changelog: solution--add another repository that documents: username&id, time of log, type of action, what happened
 
 ### Day 13
 
-tests, end of **Physical day 3**
+Tests, end of **Physical day 3&4**
 
 ## Acknowledgements
 
